@@ -1,2 +1,3 @@
 shop.sqlite3
 venv/*
+myshop/__pycache__/*

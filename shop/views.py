@@ -18,6 +18,15 @@ def female_product_list(request):
 	context = {'femininos' : femininos }
 	return render(request, 'shop/product/femininos.html', context)
 
+def male_product_list(request):
+	male = Product.objects.filter(slug="masculino")
+
+	return render(request, 'shop/product/masculino.html', {'male':male})
+
+def acessorios_list(request):
+	acessorios = Product.objects.filter(slug="acessorios-sapatos")
+	return render(request, 'shop/product/acessorios.html', {'acessorios':acessorios})
+
 def product_detail(request, id, slug):
 	product = get_object_or_404(Product, id=id, slug=slug, avaliable=True)
 	cart_product_form = CartProductForm()

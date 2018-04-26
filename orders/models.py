@@ -29,6 +29,9 @@ class OrderItem(models.Model):
 	quantity = models.PositiveIntegerField(default=1)
 
 	def __str__(self):
+		return self.Product.name
+
+	def __str__(self):
 		return '{}'.format(self.id)
 
 	def get_cost(self):
