@@ -1,3 +1,7 @@
+altgraph==0.15
+boto3==1.7.10
+botocore==1.10.10
+certifi==2018.1.18
 dj-database-url==0.5.0
 dj-static==0.0.6
 Django==1.9
@@ -6,3 +10,6 @@ gunicorn==19.7.1
 Pillow==2.9.0
 static3==0.7.0
 psycopg2>=2.6.1
+boto3==1.7.10
+botocore==1.10.10
+certifi==2018.1.18

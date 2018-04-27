@@ -131,15 +131,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-'''
-#configuraçoes do amazom
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-AWS_STORAGE_BUCKET_NAME = 'fashion-vidal'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-MEDIA_URL = "https://fashion-vidal.s3.amazonaws.com/"
-AWS_ACCESS_KEY_ID = 'AKIAIMSW5SA3JZJ44FBA'
-AWS_SECRET_ACCESS_KEY = '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' # Insira aqui sua secret key gerada
-'''
+
 # Heroku configs
 if os.getcwd() == '/app':
     import dj_database_url
@@ -159,3 +151,18 @@ if os.getcwd() == '/app':
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, 'static'),
     )
+
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = 'fashion-vidal'
+    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+
+    AWS_LOCATION = 'static'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
