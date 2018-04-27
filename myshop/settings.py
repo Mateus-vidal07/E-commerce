@@ -68,7 +68,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'cart.context_processors.cart',
-            ],
+
+                            ],
         },
     },
 ]
@@ -122,7 +123,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
@@ -131,7 +131,15 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 CART_SESSION_ID = 'cart'
 
-
+'''
+#configuraçoes do amazom
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+AWS_STORAGE_BUCKET_NAME = 'fashion-vidal'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+MEDIA_URL = "https://fashion-vidal.s3.amazonaws.com/"
+AWS_ACCESS_KEY_ID = 'AKIAIMSW5SA3JZJ44FBA'
+AWS_SECRET_ACCESS_KEY = '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' # Insira aqui sua secret key gerada
+'''
 # Heroku configs
 if os.getcwd() == '/app':
     import dj_database_url
